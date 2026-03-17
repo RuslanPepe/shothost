@@ -3,6 +3,10 @@ const preview = document.getElementById('preview');
 
 let files = [];
 
+window.addEventListener('resize', updateArrows);
+
+document.getElementById('createLinks').addEventListener('click', ()=>UploadImage())
+
 input.addEventListener('change', function () {
 
     Array.from(this.files).forEach(file => {
@@ -259,5 +263,25 @@ function grabImg(img) {
     });
 }
 
+function UploadImage() {
+    const formData = new FormData();
 
-window.addEventListener('resize', updateArrows);
+    files.forEach((file) => {
+        formData.append('image[]', file);
+    })
+
+    fetch('/upload', {
+        method: 'POST',
+        headers: {
+            // 'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: formData
+    })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.error(err));
+
+}
+
+

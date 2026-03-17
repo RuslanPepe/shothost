@@ -18,6 +18,7 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - ../:/var/www/
+      - ./php.ini:/usr/local/etc/php/conf.d/99-my-upload.ini
     container_name: app
     restart: always
 

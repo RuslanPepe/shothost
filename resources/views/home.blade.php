@@ -36,13 +36,12 @@
     </div>
 
     <div id="photoContainer"></div>
-
     <div class="row">
         <div class="col-12 d-flex">
-            <button class="btn createLinks" type="button">
+            <button class="btn createLinks" id="createLinks" type="button">
                 Создать ссылку
             </button>
-            <button class="btn createSettings" type="button">
+            <button class="btn createSettings" id="createSettings" type="button">
                 ⚙
             </button>
         </div>
