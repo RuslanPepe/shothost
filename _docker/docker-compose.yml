@@ -1,0 +1,44 @@
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ../:/var/www/
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    ports:
+      - "8000:80"
+    depends_on:
+      - app
+    container_name: app_nginx
+    restart: always
+
+  app:
+    user: 1001:1001
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ../:/var/www/
+    container_name: app
+    restart: always
+
+  db:
+    image: mysql:latest
+    container_name: app_db
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_DATABASE: laravel
+    depends_on:
+       - app
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
