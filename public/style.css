@@ -15,12 +15,14 @@ body {
 
 .upload-area {
     border: 2px dashed #ccc;
-    padding: 120px;
+    padding: 180px;
     text-align: center;
+    font-size: 24px;
+    font-weight: 500;
     border-radius: 10px;
     cursor: pointer;
     width: 70%;
-    margin: 20px auto;
+    margin: 60px auto 20px auto;
     box-sizing: border-box;
 }
 
@@ -170,19 +172,40 @@ body {
 }
 
 .createLinks {
-    background: #422b1d;
-    /*background: #6F6965;*/
+    /*background: #422b1d;*/
+    background: #c6a693;
     width: 80%;
-    margin: 0 auto;
+    margin: 0 0 0 auto;
     display: block;
+    border: #e8d4be solid 1px;
+    border-radius: 6px 0 0 6px;
 }
 
 .createLinks:hover {
-    background: #352218;
+    background: #a18372;
 }
 
 .createLinksText {
-    color: #9c9c9c;
+    color: rgba(0, 0, 0, .8);
+    font-weight: 500;
+    margin: 0;
+}
+
+.createSettings {
+    background: #c6a693;
+    margin: 0 auto 0 0;
+    display: block;
+    border: #e8d4be solid 1px;
+    border-radius: 0 6px 6px 0;
+}
+
+.createSettings:hover {
+    background: #a18372;
+}
+
+.createSettingsText {
+    color: rgba(0, 0, 0, .8);
+    font-weight: 500;
     margin: 0;
 }
 
