@@ -270,6 +270,11 @@ function UploadImage() {
         formData.append('image[]', file);
     })
 
+    formData.append('settings', JSON.stringify({
+        // lifeTime: 7,
+        // lifeTime: 7,
+    }));
+
     fetch('/upload', {
         method: 'POST',
         headers: {
@@ -284,4 +289,15 @@ function UploadImage() {
 
 }
 
+document.getElementById('deleteAfter5').addEventListener('input', () => {
+    let value = parseInt(input.value) || 0;
+
+    if (value > 365) value = 365;
+    if (value < 0) value = 0;
+
+    input.value = value;
+});
+
+
+// document.getElementById('SettingsLinkBtn').addEventListener()
 

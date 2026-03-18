@@ -18,6 +18,6 @@ class ImageController extends Controller{
             }
             return $name;
         }
-        return 1;
+        return response()->expire();
     }
 }

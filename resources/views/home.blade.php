@@ -41,15 +41,126 @@
             <button class="btn createLinks" id="createLinks" type="button">
                 Создать ссылку
             </button>
-            <button class="btn createSettings" id="createSettings" type="button">
+            <button class="btn createSettings" id="createSettings" type="button" data-bs-toggle="modal" data-bs-target="#modalSettings">
                 ⚙
             </button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalSettings" tabindex="-1" aria-labelledby="modalSettingsLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modalSettings">
+                <div class="modal-header modalSettingsHeader">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Настройки ссылки</h1>
+                    <button type="button" class="btn-close" data-bs-theme="dark" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="SettingsLink">
+                    <div class="modal-body">
+                        <div class="lifeTime ">
+                            <div class="modalSettingsTitle" style="padding: 0 0 16px 0;">Life time</div>
+                            <div class="d-flex gap-1">
+                                <input type="radio" class="btn-check" name="lifetime" id="option1" value="1" autocomplete="off" checked>
+                                <label class="btn btnSecondary" for="option1">1</label>
+
+                                <input type="radio" class="btn-check" name="lifetime" id="option2" value="3" autocomplete="off">
+                                <label class="btn btnSecondary" for="option2">3</label>
+
+                                <input type="radio" class="btn-check" name="lifetime" id="option3" value="7" autocomplete="off">
+                                <label class="btn btnSecondary" for="option3">7</label>
+
+                                <input type="radio" class="btn-check" name="lifetime" id="option4" value="14" autocomplete="off">
+                                <label class="btn btnSecondary" for="option4">14</label>
+
+                                <input type="radio" class="btn-check" name="lifetime" id="option5" value="21" autocomplete="off">
+                                <label class="btn btnSecondary" for="option5">21</label>
+
+                                <input type="radio" class="btn-check" name="lifetime" id="option6" value="30" autocomplete="off">
+                                <label class="btn btnSecondary" for="option6">30</label>
+
+                                <div style="">
+                                    <input type="number" class="form-control inputLifeTime modalSettingsInput" id="deleteAfter5" min="0" max="365" aria-describedby="basic-addon1">
+                                    <p style="position: absolute;">max: 365 days</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="access">
+                            <div class="modalSettingsTitle">Access</div>
+                            <input type="radio" class="btn-check" name="access" id="access1" value="link" autocomplete="off" checked>
+                            <label class="btn btnSecondary" for="access1">Link</label>
+
+                            <input type="radio" class="btn-check" name="access" id="access2" value="private" autocomplete="off">
+                            <label class="btn btnSecondary" for="access2">Private</label>
+
+                            <input type="radio" class="btn-check" name="access" id="access3" value="password" autocomplete="off">
+                            <label class="btn btnSecondary" for="access3">Password</label>
+                        </div>
+
+                        <div class="deleteAfter">
+                            <div class="modalSettingsTitle">Delete after day</div>
+                            <div class="inputModalSettings d-flex gap-1">
+                                <input type="radio" class="btn-check" name="deleteAfter" id="deleteAfter1" value="none" autocomplete="off" checked>
+                                <label class="btn btnSecondary" for="deleteAfter1">none</label>
+
+                                <input type="radio" class="btn-check" name="deleteAfter" id="deleteAfter2" value="1" autocomplete="off">
+                                <label class="btn btnSecondary" for="deleteAfter2">1</label>
+
+                                <input type="radio" class="btn-check" name="deleteAfter" id="deleteAfter3" value="5" autocomplete="off">
+                                <label class="btn btnSecondary" for="deleteAfter3">5</label>
+
+                                <input type="radio" class="btn-check" name="deleteAfter" id="deleteAfter4" value="10" autocomplete="off">
+                                <label class="btn btnSecondary" for="deleteAfter4">10</label>
+
+                                <div style="">
+                                    <input type="number" class="form-control inputDeleteAfter modalSettingsInput" id="deleteAfter5" min="0" max="365" aria-describedby="basic-addon1">
+                                    <p style="position: absolute;">max: 365</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="typeAccess">
+                            <div class="modalSettingsTitle">Type access</div>
+                            <div class="inputModalSettings d-flex gap-1">
+                                <input type="radio" class="btn-check" name="typeAccess" id="typeAccess1" value="onlyView" autocomplete="off" checked>
+                                <label class="btn btnSecondary" for="typeAccess1">Only view</label>
+
+                                <input type="radio" class="btn-check" name="typeAccess" id="typeAccess2" value="all" autocomplete="off" >
+                                <label class="btn btnSecondary" for="typeAccess2">All</label>
+
+                            </div>
+                        </div>
+
+                        <div class="Title">
+                            <div class="modalSettingsTitle">Title</div>
+                            <input type="text" class="form-control modalSettingsInputTitle modalSettingsInput" name="Title" id="Title">
+                        </div>
+
+                        <div class="Description">
+                            <div class="modalSettingsTitle">Description</div>
+                            <input type="text" class="form-control modalSettingsInputDescription modalSettingsInput" name="Description" id="Description">
+                        </div>
+
+                        <div class="CustomLink">
+                            <div class="modalSettingsTitle">Custom link</div>
+                            <input type="text" class="form-control modalSettingsInputCustomLink modalSettingsInput" name="CustomLink" id="CustomLink">
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer modalSettingsFooter">
+                    <button type="button" class="btn modalSettingsBtn" data-bs-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn modalSettingsBtn" id="SettingsLinkBtn">Сохранить</button>
+                </div>
+            </div>
         </div>
     </div>
 
 </div>
 
 <script src="{{ asset('Photo.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 </body>
 </html>

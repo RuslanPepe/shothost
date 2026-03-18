@@ -209,3 +209,75 @@ body {
     margin: 0;
 }
 
+.modalSettings {
+    background: #271e16;
+    color: rgba(255,255,255,.9);
+}
+
+.modalSettingsBtn {
+    background: #4b3d37;
+    color: rgba(255,255,255,.9);
+}
+
+.modalSettingsHeader {
+    border-color: #3A302BFF;
+}
+
+.modalSettingsFooter {
+    border-color: #3A302BFF;
+}
+
+.btnSecondary {
+    background: #984906;
+    /*background: #008bc4;*/
+    color: rgba(255,255,255,.9);
+    border: none;
+}
+
+.btn-check:hover+.btn {
+    background: #8a4204;
+    /*background: #54caff;*/
+}
+
+.btn-check:checked+.btn {
+    background: #cc7226;
+    /*background: #2597c6;*/
+}
+
+.modalSettingsTitle {
+    padding: 16px 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.inputDeleteAfter {
+    width: 120px;
+    height: 38px;
+}
+
+.inputLifeTime {
+    width: 120px;
+    height: 38px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: none;
+}
+
+.modalSettingsInputTitle, .modalSettingsInputDescription, .modalSettingsInputCustomLink {
+    width: 360px;
+    height: 38px;
+}
+
+.modalSettingsInput {
+    background: #241b11;
+    color: rgba(255,255,255,.9);
+    border: rgba(255,255,255,.5) solid 1px;
+}
+
+.modalSettingsInput:focus {
+    background: #1e170e;
+    color: rgba(255,255,255,.9);
+    border: rgba(255,255,255,.5) solid 1px;
+}
