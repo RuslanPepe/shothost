@@ -2,6 +2,7 @@ const input = document.getElementById('formFileMultiple');
 const preview = document.getElementById('preview');
 
 let files = [];
+let Form = new FormData;
 
 window.addEventListener('resize', updateArrows);
 
@@ -299,5 +300,21 @@ document.getElementById('deleteAfter5').addEventListener('input', () => {
 });
 
 
-// document.getElementById('SettingsLinkBtn').addEventListener()
+document.getElementById('SettingsLinkBtn').addEventListener('click', ()=> {
+    const FormSettingsLink = document.getElementById('SettingsLink')
+    Form = new FormData(FormSettingsLink)
+
+    fetch('/createLink', {
+        method: 'POST',
+        headers: {
+            // 'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: Form
+    })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.error(err));
+
+})
 

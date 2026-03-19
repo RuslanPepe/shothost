@@ -55,7 +55,8 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Настройки ссылки</h1>
                     <button type="button" class="btn-close" data-bs-theme="dark" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="SettingsLink">
+                <form id="SettingsLink" method="post">
+                    @CSRF
                     <div class="modal-body">
                         <div class="lifeTime ">
                             <div class="modalSettingsTitle" style="padding: 0 0 16px 0;">Life time</div>
