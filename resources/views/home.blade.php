@@ -80,7 +80,7 @@
                                 <label class="btn btnSecondary" for="option6">30</label>
 
                                 <div style="">
-                                    <input type="number" class="form-control inputLifeTime modalSettingsInput" id="deleteAfter5" min="0" max="365" aria-describedby="basic-addon1">
+                                    <input type="number" class="form-control inputLifeTime modalSettingsInput" id="lifetimeInput" min="0" max="365" aria-describedby="basic-addon1">
                                     <p style="position: absolute;">max: 365 days</p>
                                 </div>
 
@@ -114,7 +114,7 @@
                                 <input type="radio" class="btn-check" name="deleteAfter" id="deleteAfter4" value="10" autocomplete="off">
                                 <label class="btn btnSecondary" for="deleteAfter4">10</label>
 
-                                <div style="">
+                                <div>
                                     <input type="number" class="form-control inputDeleteAfter modalSettingsInput" id="deleteAfter5" min="0" max="365" aria-describedby="basic-addon1">
                                     <p style="position: absolute;">max: 365</p>
                                 </div>

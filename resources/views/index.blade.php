@@ -22,19 +22,39 @@
 </nav>
 
 <div class="container mt-4">
-{{--    {{ $file }}--}}
-{{--    <img src="{{ ($file) }}">--}}
-    {{  var_dump($file)  }}
 
-{{--    @foreach($paths as $path)--}}
-{{--        <img src="{{ $path }}" alt="">--}}
-{{--    @endforeach--}}
+    @if($body['title'])
+        <div class="titleContext"><p class="title">Title: </p>{{ $body['title'] }}</div>
+    @endif
+
+    @if($body['description'])
+        <div class="descriptionContext"><p class="description">Description: </p>{{ $body['description'] }}</div>
+    @endif
+
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+            @foreach($paths as $path)
+                <button type="button" data-bs-target="#carouselExampleIndicators" class="{{ $loop->first ? 'active' : '' }}" data-bs-slide-to="{{ $loop->index }}" {{ $loop->first ? 'aria-current="true"' : '' }} aria-label="Slide {{ $loop->iteration }}"></button>
+            @endforeach
+        </div>
+        <div class="carousel-inner">
+            @foreach($paths as $path)
+                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                    <img src="{{ url('photo/' . urlencode($path)) }}" class="d-block w-100" alt="not found...">
+                </div>
+            @endforeach
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
 </div>
-
-<script>
-    {{--let src = new File({{ $file }})--}}
-    {{--console.log(src)--}}
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 

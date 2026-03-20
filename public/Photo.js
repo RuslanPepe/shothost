@@ -269,13 +269,13 @@ function CreateLink() {
     files.forEach((file) => {
         Form.append('image[]', file);
     })
-    Form.append('lifetime', 1);
-    Form.append('access', 'link');
-    Form.append('deleteAfter', 0);
-    Form.append('typeAccess', 'onlyView');
-    Form.append('Title', 123);
-    Form.append('Description', 2);
-    Form.append('CustomLink', 'girl');
+    // Form.append('lifetime', 1);
+    // Form.append('access', 'link');
+    // Form.append('deleteAfter', 0);
+    // Form.append('typeAccess', 'onlyView');
+    // Form.append('Title', 123);
+    // Form.append('Description', 2);
+    // Form.append('CustomLink', '2');
 
     fetch('/createLink', {
         method: 'POST',
@@ -288,20 +288,9 @@ function CreateLink() {
         .then(res => res.json())
         .then(data => console.log(data))
         .catch(err => console.error(err));
-
 }
 
-document.getElementById('deleteAfter5').addEventListener('input', () => {
-    let value = parseInt(input.value) || 0;
-
-    if (value > 365) value = 365;
-    if (value < 0) value = 0;
-
-    input.value = value;
-});
-
-
-document.getElementById('SettingsLinkBtn').addEventListener('click', ()=> {
-    Form = new FormData(document.getElementById('SettingsLink'))
-})
+// document.getElementById('SettingsLinkBtn').addEventListener('click', ()=> {
+//     Form = new FormData(document.getElementById('SettingsLink'))
+// })
 
