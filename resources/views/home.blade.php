@@ -100,9 +100,9 @@
                         </div>
 
                         <div class="deleteAfter">
-                            <div class="modalSettingsTitle">Delete after day</div>
+                            <div class="modalSettingsTitle" >Delete after day (без просмотра)</div>
                             <div class="inputModalSettings d-flex gap-1">
-                                <input type="radio" class="btn-check" name="deleteAfter" id="deleteAfter1" value="none" autocomplete="off" checked>
+                                <input type="radio" class="btn-check" name="deleteAfter" id="deleteAfter1" value="0" autocomplete="off" checked>
                                 <label class="btn btnSecondary" for="deleteAfter1">none</label>
 
                                 <input type="radio" class="btn-check" name="deleteAfter" id="deleteAfter2" value="1" autocomplete="off">
@@ -136,7 +136,7 @@
 
                         <div class="Title">
                             <div class="modalSettingsTitle">Title</div>
-                            <input type="text" class="form-control modalSettingsInputTitle modalSettingsInput" name="Title" id="Title">
+                            <input type="text" class="form-control modalSettingsInputTitle modalSettingsInput" value="" name="Title" id="Title">
                         </div>
 
                         <div class="Description">
@@ -146,7 +146,10 @@
 
                         <div class="CustomLink">
                             <div class="modalSettingsTitle">Custom link</div>
-                            <input type="text" class="form-control modalSettingsInputCustomLink modalSettingsInput" name="CustomLink" id="CustomLink">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text modalSettingsSpan" id="customLinkLabel">hostshot.net/</span>
+                                <input type="text" aria-describedby="customLinkLabel" class="form-control modalSettingsInputCustomLink modalSettingsInput" name="CustomLink" id="CustomLink">
+                            <div/>
                         </div>
                     </div>
                 </form>

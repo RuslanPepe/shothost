@@ -25,11 +25,13 @@ class LinkRequest extends FormRequest
         return [
             'lifetime' => 'required|integer|between:1,365',
             'access' => 'required|in:link,password,private',
-            'deleteAfter' => 'required|integer',
+            'deleteAfter' => 'required|between:1,365',
             'typeAccess' => 'required|string|in:all,onlyView',
-            'Title' => 'string|max:255',
-            'Description' => 'string|max:1024',
-            'CustomLink' => 'string|max:255',
+            'Title' => 'nullable|string|max:255',
+            'Description' => 'nullable|string|max:1024',
+            'CustomLink' => 'nullable|string|max:255',
+            'image' => 'required|array',
+            'image.*' => 'file|mimes:jpeg,png,jpg,gif,svg|max:65536',
         ];
     }
 }

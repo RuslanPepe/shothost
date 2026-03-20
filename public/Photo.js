@@ -6,7 +6,7 @@ let Form = new FormData;
 
 window.addEventListener('resize', updateArrows);
 
-document.getElementById('createLinks').addEventListener('click', ()=>UploadImage())
+document.getElementById('createLinks').addEventListener('click', ()=>CreateLink())
 
 input.addEventListener('change', function () {
 
@@ -264,25 +264,26 @@ function grabImg(img) {
     });
 }
 
-function UploadImage() {
-    const formData = new FormData();
-
+function CreateLink() {
+    Form = new FormData(document.getElementById('SettingsLink'))
     files.forEach((file) => {
-        formData.append('image[]', file);
+        Form.append('image[]', file);
     })
+    Form.append('lifetime', 1);
+    Form.append('access', 'link');
+    Form.append('deleteAfter', 0);
+    Form.append('typeAccess', 'onlyView');
+    Form.append('Title', 123);
+    Form.append('Description', 2);
+    Form.append('CustomLink', 'girl');
 
-    formData.append('settings', JSON.stringify({
-        // lifeTime: 7,
-        // lifeTime: 7,
-    }));
-
-    fetch('/upload', {
+    fetch('/createLink', {
         method: 'POST',
         headers: {
             // 'Content-Type': 'application/json',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
         },
-        body: formData
+        body: Form
     })
         .then(res => res.json())
         .then(data => console.log(data))
@@ -301,20 +302,6 @@ document.getElementById('deleteAfter5').addEventListener('input', () => {
 
 
 document.getElementById('SettingsLinkBtn').addEventListener('click', ()=> {
-    const FormSettingsLink = document.getElementById('SettingsLink')
-    Form = new FormData(FormSettingsLink)
-
-    fetch('/createLink', {
-        method: 'POST',
-        headers: {
-            // 'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-        },
-        body: Form
-    })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.error(err));
-
+    Form = new FormData(document.getElementById('SettingsLink'))
 })
 
