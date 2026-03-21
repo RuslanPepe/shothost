@@ -7,18 +7,11 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 class LinkServices {
-    public function showLink($id) {
-        $link = Link::where('uuid', $id)
-            ->orWhere('CustomLink', $id)
-            ->firstOrFail();
-
+    public function showImage($link) {
         foreach ($link->paths as $path) {
             $paths[] = $path['path'];
         }
-        return [
-            'link' => $link,
-            'paths' => $paths,
-        ];
+        return $paths;
     }
     public function storeLink($data) {
         $data['expires_at'] = Carbon::now()->addDays((int)$data['lifetime']);

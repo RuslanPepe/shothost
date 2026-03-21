@@ -13,22 +13,18 @@ use App\Services\ImageServices;
 
 class LinkController extends Controller {
     public function index($id, LinkServices $linkServices){
-        ['link' => $link, 'paths' => $paths] = $linkServices->showLink($id);
+        $link = Link::where('uuid', $id)->orWhere('CustomLink', $id)->firstOrFail();
+        $paths = $linkServices->showImage($link);
         $body = (new LinkResource($link))->toArray(request());
         return view('index', compact('paths', 'body'));
     }
     public function store(LinkRequest $request, LinkServices $linkServices, ImageServices $imageServices) {
         $data = $request->all();
-        $data['paths'] = $linkServices->imageHandler($request->file('image'));
+        $data['paths'] = $imageServices->storeImage($request->file('image'));
         $link = $linkServices->storeLink($data);
         return response()->json($link, 201);
     }
-    public function show($path) {
-        if (!file_exists(storage_path('app/private/images/' . $path))) {
-            abort(404);
-        }
-        return response()->file(
-            storage_path('app/private/images/' . $path),
-        );
+    public function show($path, ImageServices $imageServices) {
+        return $imageServices->showPathImage($path);
     }
 }

@@ -23,6 +23,8 @@
 
 <div class="container mt-4">
 
+{{--    {{ var_dump($paths) }}--}}
+
     @if($body['title'])
         <div class="titleContext"><p class="title">Title: </p>{{ $body['title'] }}</div>
     @endif
