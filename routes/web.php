@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LinkController;
 
-Route::get('/', [ImageController::class, 'index']);
+Route::get('/', [LinkController::class, 'index']);
 Route::post('/createLink', [LinkController::class, 'store']);
-Route::get('/q/{link}', [LinkController::class, 'index']);
-Route::get('/photo/{path}', [LinkController::class, 'show'])
+Route::get('/l/{link}', [LinkController::class, 'show']);
+Route::get('/photo/{path}', [ImageController::class, 'show'])
     ->name('photo.show');
 
 Route::get('/test', function () {

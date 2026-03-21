@@ -289,8 +289,3 @@ function CreateLink() {
         .then(data => console.log(data))
         .catch(err => console.error(err));
 }
-
-// document.getElementById('SettingsLinkBtn').addEventListener('click', ()=> {
-//     Form = new FormData(document.getElementById('SettingsLink'))
-// })
-

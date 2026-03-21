@@ -92,15 +92,18 @@
                             <input type="radio" class="btn-check" name="access" id="access1" value="link" autocomplete="off" checked>
                             <label class="btn btnSecondary" for="access1">Link</label>
 
-                            <input type="radio" class="btn-check" name="access" id="access2" value="private" autocomplete="off">
-                            <label class="btn btnSecondary" for="access2">Private</label>
+                            <input type="radio" class="btn-check" name="access"  id="access2" value="password" autocomplete="off">
+                            <label class="btn btnSecondary" for="access2">Password</label>
 
-                            <input type="radio" class="btn-check" name="access" id="access3" value="password" autocomplete="off">
-                            <label class="btn btnSecondary" for="access3">Password</label>
+                            <input type="radio" class="btn-check" name="access" id="access3" {{ !auth()->check() ? 'disabled' : '' }} value="private" autocomplete="off">
+                            <label class="btn btnSecondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Доступно при авторизации" for="access3">Private</label>
+                            @if(!auth()->check())
+                                <p style="color: rgb(255,0,0, .6); margin: 0">Private доступно при авторизации</p>
+                            @endif
                         </div>
 
                         <div class="deleteAfter">
-                            <div class="modalSettingsTitle" >Delete after day (без просмотра)</div>
+                            <div class="modalSettingsTitle" >Delete after day <br>(без просмотра)</div>
                             <div class="inputModalSettings d-flex gap-1">
                                 <input type="radio" class="btn-check" name="deleteAfter" id="deleteAfter1" value="0" autocomplete="off" checked>
                                 <label class="btn btnSecondary" for="deleteAfter1">none</label>
@@ -116,7 +119,7 @@
 
                                 <div>
                                     <input type="number" class="form-control inputDeleteAfter modalSettingsInput" id="deleteAfter5" min="0" max="365" aria-describedby="basic-addon1">
-                                    <p style="position: absolute;">max: 365</p>
+                                    <p style="position: absolute;">max: 30 days</p>
                                 </div>
 
                             </div>
@@ -147,9 +150,9 @@
                         <div class="CustomLink">
                             <div class="modalSettingsTitle">Custom link</div>
                             <div class="input-group mb-3">
-                                <span class="input-group-text modalSettingsSpan" id="customLinkLabel">hostshot.net/</span>
+                                <span class="input-group-text modalSettingsSpan" id="customLinkLabel">hostshot.ru/l/</span>
                                 <input type="text" aria-describedby="customLinkLabel" class="form-control modalSettingsInputCustomLink modalSettingsInput" name="CustomLink" id="CustomLink">
-                            <div/>
+                            </div>
                         </div>
                     </div>
                 </form>

@@ -7,7 +7,6 @@ class ImageServices {
     public function storeImage($dataImage) {
         $result = [];
         foreach ($dataImage as $image) {
-            logger(basename($image->store('images')));
             $result[] = [
                 'path' => basename($image->store('images')),
                 'mimeType' => $image->getMimeType()
