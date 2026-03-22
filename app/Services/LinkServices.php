@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Link;
+use App\Models\LinkViews;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
@@ -17,6 +18,8 @@ class LinkServices {
         $data['expires_at'] = Carbon::now()->addDays((int)$data['lifetime']);
         unset($data['image']);
         $data['uuid'] = Str::uuid()->toString();
-        return Link::create($data);
+        $link = Link::create($data);
+        LinkViews::create(['link_id' => $link->id]);
+        return $link;
     }
 }

@@ -103,7 +103,7 @@
                         </div>
 
                         <div class="deleteAfter">
-                            <div class="modalSettingsTitle" >Delete after day <br>(без просмотра)</div>
+                            <div class="modalSettingsTitle" >Delete after views</div>
                             <div class="inputModalSettings d-flex gap-1">
                                 <input type="radio" class="btn-check" name="deleteAfter" id="deleteAfter1" value="0" autocomplete="off" checked>
                                 <label class="btn btnSecondary" for="deleteAfter1">none</label>

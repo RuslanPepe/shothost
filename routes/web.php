@@ -9,6 +9,7 @@ Route::get('/', [LinkController::class, 'index']);
 Route::post('/createLink', [LinkController::class, 'store']);
 Route::get('/l/{link}', [LinkController::class, 'show']);
 Route::get('/photo/{path}', [ImageController::class, 'show'])
+    ->where('path', '.*')
     ->name('photo.show');
 
 Route::get('/test', function () {
