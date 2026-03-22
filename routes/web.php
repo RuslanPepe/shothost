@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\LinkViews;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LinkController;
+use App\Models\Link;
 
 Route::get('/', [LinkController::class, 'index']);
 Route::post('/createLink', [LinkController::class, 'store']);
@@ -13,5 +15,8 @@ Route::get('/photo/{path}', [ImageController::class, 'show'])
     ->name('photo.show');
 
 Route::get('/test', function () {
-    dd(Carbon::now());
+    $link = Link::first();
+//    $cur = $link->linkViews;
+    $cur = $link->linkViews->increment('views');
+    dd($cur);
 });

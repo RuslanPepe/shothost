@@ -9,6 +9,7 @@ use App\Models\LinkViews;
 use App\Services\LinkServices;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Services\ImageServices;
 
@@ -23,10 +24,18 @@ class LinkController extends Controller {
         return response()->json($link, 201);
     }
     public function show($id, LinkServices $linkServices){
-        $link = Link::where('uuid', $id)->orWhere('CustomLink', $id)->firstOrFail();
-        $paths = $linkServices->showImage($link);
-        $body = (new LinkResource($link))->toArray(request());
-        LinkViews::where('link_id', $link->id)->increment('views', 1);
+        try {
+            DB::beginTransaction();
+            $link = Link::where('uuid', $id)->orWhere('CustomLink', $id)->firstOrFail();
+            $paths = $linkServices->showImage($link);
+            $body = $link instanceof Link ? new LinkResource($link) : $link;
+            $link->LinkViews->increment('views');
+            DB::commit();
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            abort(400, $ex->getMessage());
+//            return response()->json($ex->getMessage(), 400);
+        }
         return view('show', compact('paths', 'body'));
     }
 }
