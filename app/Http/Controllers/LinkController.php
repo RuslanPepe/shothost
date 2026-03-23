@@ -28,6 +28,7 @@ class LinkController extends Controller {
             DB::beginTransaction();
             $link = Link::where('uuid', $id)->orWhere('CustomLink', $id)->firstOrFail();
             $paths = $linkServices->showImage($link);
+            $pathsImage = $link->paths;
             $body = $link instanceof Link ? new LinkResource($link) : $link;
             $link->LinkViews->increment('views');
             DB::commit();
@@ -36,6 +37,6 @@ class LinkController extends Controller {
             abort(400, $ex->getMessage());
 //            return response()->json($ex->getMessage(), 400);
         }
-        return view('show', compact('paths', 'body'));
+        return view('show', compact('paths', 'body', 'pathsImage'));
     }
 }

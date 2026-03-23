@@ -323,3 +323,36 @@ body {
     /*display: flex;*/
     margin: 0 8px 0 0;
 }
+
+/*.btnDownloadPhoto {*/
+/*    !*background: #422b1d;*!*/
+/*    background: #c6a693;*/
+/*    width: 80%;*/
+/*    margin: 40px auto;*/
+/*    display: block;*/
+/*    border: #e8d4be solid 1px;*/
+/*}*/
+
+.blockDownloadImage{
+    margin: 60px 0 0 0;
+}
+
+.downloadImageAll{
+    color: rgba(255,255,255,.7);
+    background: #896f60;
+    margin: 0 auto 0 0;
+    display: block;
+    border: rgba(232, 212, 190, 0.7) solid 1px;
+    border-radius: 0 6px 6px 0;
+    width: 20%;
+}
+
+.downloadImage {
+    color: rgba(255,255,255,.7);
+    background: #896f60;
+    width: 60%;
+    margin: 0 0 0 auto;
+    display: block;
+    border: rgba(232, 212, 190, 0.7) solid 1px;
+    border-radius: 6px 0 0 6px;
+}

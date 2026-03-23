@@ -40,7 +40,7 @@
         <div class="carousel-inner">
             @foreach($paths as $path)
                 <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                    <img src="{{ url('photo/' . urlencode($path)) }}" class="d-block w-100" alt="not found...">
+                    <img src="{{ asset($path) }}" class="d-block w-100" alt="not found...">
                 </div>
             @endforeach
         </div>
@@ -54,9 +54,77 @@
         </button>
     </div>
 
-</div>
-{{--<img src="{{ url('photo/' . urlencode($paths[0])) }}" alt="">--}}
+    <div class="row blockDownloadImage">
+        <div class="col-12 d-flex">
+            <button class="btn downloadImage" id="downloadImage" type="button">
+                Скачать фото
+            </button>
+            <button class="btn downloadImageAll" id="downloadImageAll" type="button">
+                Скачать все фото
+            </button>
+        </div>
+    </div>
 
+    {{ var_dump(basename($paths[0])) }}
+{{--    {{ var_dump($pathsImage[0]['path']) }}--}}
+
+</div>
+
+<script>
+
+    {{--function downloadImage() {--}}
+    {{--    fetch('/download/image',{--}}
+    {{--        method: 'POST',--}}
+    {{--        headers: {--}}
+    {{--            'Content-Type': 'application/json',--}}
+    {{--            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content--}}
+    {{--        },--}}
+    {{--        body: JSON.stringify({--}}
+    {{--            path: "{{ basename($paths[0]) }}"--}}
+    {{--        })--}}
+    {{--    })--}}
+    {{--        .then(res => res.blob())--}}
+    {{--        .then(blob => {--}}
+    {{--            const url = window.URL.createObjectURL(blob);--}}
+    {{--            const a = document.createElement('a');--}}
+    {{--            a.href = url;--}}
+    {{--            a.download = 'image.zip';--}}
+    {{--            a.click();--}}
+    {{--            window.URL.revokeObjectURL(url);--}}
+    {{--        })--}}
+    {{--        .catch(err => console.error(err));--}}
+    {{--}--}}
+
+
+    function downloadImages() {
+        fetch('/download/image', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            },
+            body: JSON.stringify({ paths: "{{ basename($paths[0]) }}" })
+        })
+            .then(res => {
+                if (!res.ok) throw new Error('Network response was not ok');
+                return res.blob();
+            })
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'images.zip'; // имя файла ZIP
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(err => console.error(err));
+    }
+
+    document.getElementById('downloadImage').addEventListener('click', ()=>downloadImages())
+
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 

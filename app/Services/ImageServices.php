@@ -10,24 +10,19 @@ class ImageServices {
         $result = [];
         foreach ($dataImage as $image) {
             $result[] = [
-                'path' => basename($image->store('images')),
+                'path' => basename($image->store('images', 'public')),
                 'mimeType' => $image->getMimeType()
             ];
         }
         return $result;
     }
     public function showPathImage($path) {
-
-//        logger(Storage::url($path));
-//
-//        return Storage::url($path);
-
         if (!file_exists(storage_path('app/private/images/' . $path))) {
             abort(404);
         }
-//        logger(public_path('app/public/DPT46LawXwAYiyfjSTD24R9i1brFZr7qtmPkBBHf.jpg'));
-        return response()->file(
-            storage_path('app/private/images/' . $path)
-        );
+        return Storage::url('app/private/images/' . $path);
+//        return response()->file(
+//            storage_path('app/private/images/' . $path)
+//        );
     }
 }
