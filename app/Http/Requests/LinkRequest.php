@@ -25,7 +25,7 @@ class LinkRequest extends FormRequest
         return [
             'lifetime' => 'required|integer|between:1,365',
             'access' => 'required|in:link,password,private',
-            'deleteAfter' => 'required|between:1,365',
+            'deleteAfter' => 'between:1,365|nullable',
             'typeAccess' => 'required|string|in:all,onlyView',
             'Title' => 'nullable|string|max:255',
             'Description' => 'nullable|string|max:1024',

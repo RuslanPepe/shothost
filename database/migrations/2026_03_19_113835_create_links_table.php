@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid')->unique();
+            $table->uuid()->unique();
             $table->json('paths');
             $table->unsignedSmallInteger('lifetime');
             $table->enum('access', ['link', 'password', 'private'])->default('link');
-            $table->unsignedSmallInteger('deleteAfter');
+            $table->unsignedSmallInteger('deleteAfter')->nullable();
             $table->enum('typeAccess', ['onlyView', 'all'])->default('onlyView');
             $table->string('Title', 255)->nullable();
             $table->string('Description', 1024)->nullable();

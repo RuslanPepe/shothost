@@ -27,15 +27,16 @@ class LinkController extends Controller {
         return response()->json($link, 201);
     }
     public function show($id, LinkServices $linkServices) {
+        $link = Link::where('uuid', $id)->orWhere('CustomLink', $id)->firstOrFail();
+        $this->authorize('view', $link);
+        $redirect = $linkServices->CheckPassword($link);
+        if ($redirect){return $redirect;}
         try {
-            $link = Link::where('uuid', $id)->orWhere('CustomLink', $id)->firstOrFail();
-            $redirect = $linkServices->CheckPassword($link);
-            if ($redirect){return $redirect;}
             DB::beginTransaction();
             $paths = $linkServices->showImage($link);
             $body = $link instanceof Link ? new LinkResource($link) : $link;
-            $link->LinkViews->increment('views');
             $access = $link->typeAccess;
+            $link->LinkViews->increment('views');
             DB::commit();
         } catch (\Exception $ex) {
             DB::rollBack();

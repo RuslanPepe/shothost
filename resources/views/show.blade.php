@@ -48,9 +48,9 @@
    @endif
 <script src="{{ asset('js/Show.js') }}"></script>
 <script>
-document.getElementById('downloadImageAll').addEventListener('click', ()=>downloadImagesAll(@json($paths)))
-document.getElementById('downloadImage').addEventListener('click', ()=>downloadImage())
+@if($access === 'all')
+    document.getElementById('downloadImageAll').addEventListener('click', ()=>downloadImagesAll(@json($paths)))
+    document.getElementById('downloadImage').addEventListener('click', ()=>downloadImage())
+@endif
 </script>
 @endsection
-
-

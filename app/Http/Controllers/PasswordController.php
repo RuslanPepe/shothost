@@ -12,13 +12,10 @@ class PasswordController extends Controller {
         return view('password.index', compact('id'));
     }
     public function passwordCheck(Request $request) {
-//        logger($request->password);
         $link = Link::where('uuid', $request['id'])->orWhere('CustomLink', $request['id'])->firstOrFail();
         if (Hash::check($request['password'], $link->password)) {
             session([$request->id => true]);
-//        logger(1);
         }
-        logger(session()->all());
         return redirect('/');
     }
 }

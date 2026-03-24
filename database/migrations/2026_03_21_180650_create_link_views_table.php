@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('link_views', function (Blueprint $table) {
             $table->id();
             $table->foreignId('link_id')->constrained('links')->cascadeOnDelete();
-            $table->unsignedInteger('views')->default(0);
+            $table->unsignedInteger('views')->index()->default(0);
             $table->timestamps();
         });
     }

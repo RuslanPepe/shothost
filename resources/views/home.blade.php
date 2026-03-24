@@ -90,7 +90,7 @@
                     <div class="deleteAfter">
                         <div class="modalSettingsTitle" >Delete after views</div>
                         <div class="inputModalSettings d-flex gap-1">
-                            <input type="radio" class="btn-check" name="deleteAfter" id="deleteAfter1" value="0" autocomplete="off" checked>
+                            <input type="radio" class="btn-check" name="deleteAfter" id="deleteAfter1" value="" autocomplete="off" checked>
                             <label class="btn btnSecondary" for="deleteAfter1">none</label>
 
                             <input type="radio" class="btn-check" name="deleteAfter" id="deleteAfter2" value="1" autocomplete="off">
@@ -103,7 +103,7 @@
                             <label class="btn btnSecondary" for="deleteAfter4">10</label>
 
                             <div>
-                                <input type="number" class="form-control inputDeleteAfter modalSettingsInput" id="deleteAfter5" min="0" max="365" aria-describedby="basic-addon1">
+                                <input type="number" class="form-control inputDeleteAfter modalSettingsInput" name="deleteAfter" id="deleteAfter5" min="0" max="365" aria-describedby="basic-addon1">
                                 <p style="position: absolute;">max: 30 days</p>
                             </div>
 

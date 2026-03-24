@@ -10,7 +10,13 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
+//Schedule::call(function () {
+//    Link::where('expires_at', '<', now())->delete();
+//})->hourly();
+
 Schedule::call(function () {
-    logger(Link::where('expires_at', '<', now())->delete());
-    logger(1);
-})->hourly();
+    Link::join('link_views', 'link_views.link_id', '=', 'links.id')
+        ->whereColumn('link_views.views', '>', 'links.deleteAfter')
+        ->select('links.*')
+        ->delete();
+})->everyFiveSeconds();
