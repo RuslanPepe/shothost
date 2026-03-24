@@ -31,7 +31,6 @@ class LinkController extends Controller {
             $link = Link::where('uuid', $id)->orWhere('CustomLink', $id)->firstOrFail();
             $redirect = $linkServices->CheckPassword($link);
             if ($redirect){return $redirect;}
-//            return $redirect ?? null;
             DB::beginTransaction();
             $paths = $linkServices->showImage($link);
             $body = $link instanceof Link ? new LinkResource($link) : $link;

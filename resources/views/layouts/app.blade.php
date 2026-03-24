@@ -13,13 +13,41 @@
 </head>
 <body>
 
+{{--<nav class="navbar header">--}}
+{{--    <div class="container-fluid justify-content-center">--}}
+{{--        <a class="navbar-brand text-white" href="/" style="margin: 0;">--}}
+{{--            HostShot--}}
+{{--        </a>--}}
+{{--        <div class="blockBtnAuth">--}}
+{{--            <div class="btn btn-sdecondary">Login</div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</nav>--}}
+
 <nav class="navbar header">
-    <div class="container-fluid justify-content-center">
-        <a class="navbar-brand text-white" href="/" style="margin: 0;">
+    <div class="container-fluid position-relative d-flex align-items-center">
+        <!-- Левая часть (пусто, чтобы центр был реально центр) -->
+        <div style="flex:1"></div>
+
+        <!-- Центр -->
+        <a class="navbar-brand text-white mx-auto" href="/" style="margin: 0;">
             HostShot
         </a>
+
+        <!-- Правая часть -->
+        <div class="blockBtnAuth" style="flex:1; display:flex; justify-content:flex-end">
+            @if(!auth()->check())
+                <div class="btn btn-outline-light textBtnAuth" style="margin: 0 12px 0 0">
+                    <a class="text-decoration-none text-white btnAuth" href="{{ route('register') }}">Register</a>
+                </div>
+                <div class="btn btn-outline-light textBtnAuth">
+                    <a class="text-decoration-none text-white btnAuth" href="{{ route('login') }}">Login</a>
+                </div>
+            @endif
+        </div>
     </div>
 </nav>
+
 
 <div class="container mt-4">
 

@@ -392,3 +392,9 @@ body {
     color: rgba(255,255,255,.5);
     font-weight: 500;
 }
+
+.textBtnAuth:hover {
+    .btnAuth {
+        color: black !important;
+    }
+}
