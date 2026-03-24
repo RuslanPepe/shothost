@@ -356,3 +356,39 @@ body {
     border: rgba(232, 212, 190, 0.7) solid 1px;
     border-radius: 6px 0 0 6px;
 }
+
+.BlockPassword {
+    width: 400px;
+    height: 240px;
+    background: #504037;
+    margin: 200px auto;
+    border: rgba(232, 212, 190, 0.5) 3px solid;
+    border-radius: 15px;
+    box-shadow: rgba(232, 212, 190, 0.5) 0 0 3px 2px;
+}
+
+.BlockPasswordTitle {
+    margin: 16px auto;
+    font-size: 18px;
+}
+
+.BlockPasswordInput {
+    background: rgba(143, 127, 109, 0.7);
+    border: rgba(232, 212, 190, 0.6);
+    border-radius: 5px;
+    width: 80%;
+    margin: 24px 0 0 10%;
+    font-size: 16px;
+}
+
+.BlockPasswordInput:hover {
+    border: none;
+}
+
+.BlockPasswordBtn {
+    margin: 32px 10% 0 50%;
+    width: 40%;
+    background: #40332b;
+    color: rgba(255,255,255,.5);
+    font-weight: 500;
+}

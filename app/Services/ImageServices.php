@@ -25,4 +25,8 @@ class ImageServices {
 //            storage_path('app/private/images/' . $path)
 //        );
     }
+
+    public function getPhoto($path) {
+        return storage_path('app/public/images/'.$path);
+    }
 }

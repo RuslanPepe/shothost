@@ -8,8 +8,11 @@ use App\Models\Link;
 use App\Models\LinkViews;
 use App\Services\LinkServices;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use App\Services\ImageServices;
 
@@ -23,20 +26,23 @@ class LinkController extends Controller {
         $link = $linkServices->storeLink($data);
         return response()->json($link, 201);
     }
-    public function show($id, LinkServices $linkServices){
+    public function show($id, LinkServices $linkServices) {
         try {
-            DB::beginTransaction();
             $link = Link::where('uuid', $id)->orWhere('CustomLink', $id)->firstOrFail();
+            $redirect = $linkServices->CheckPassword($link);
+            if ($redirect){return $redirect;}
+//            return $redirect ?? null;
+            DB::beginTransaction();
             $paths = $linkServices->showImage($link);
-            $pathsImage = $link->paths;
             $body = $link instanceof Link ? new LinkResource($link) : $link;
             $link->LinkViews->increment('views');
+            $access = $link->typeAccess;
             DB::commit();
         } catch (\Exception $ex) {
             DB::rollBack();
             abort(400, $ex->getMessage());
 //            return response()->json($ex->getMessage(), 400);
         }
-        return view('show', compact('paths', 'body', 'pathsImage'));
+        return view('show', compact('paths', 'body', 'access'));
     }
 }

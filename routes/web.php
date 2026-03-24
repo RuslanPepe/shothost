@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LinkController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Link;
 use Illuminate\Support\Facades\Route;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::post('/download/image/all', [ImageController::class, 'downloadImageAll'])->name('download.image.all');
+Route::post('/download/image/all', [ImageController::class, 'downloadImagesAll'])->name('download.image.all');
 Route::post('/download/image', [ImageController::class, 'downloadImage'])->name('download.image');
 
 Route::get('/', [LinkController::class, 'index']);
@@ -20,10 +21,13 @@ Route::get('/photo/{path}', [ImageController::class, 'show'])
     ->where('path', '.*')
     ->name('photo.show');
 
+Route::get('/link-password/{id}', [PasswordController::class, 'passwordIndex'])->name('password.index');
+Route::post('/link-password/check', [PasswordController::class, 'passwordCheck'])->name('password.check');
+
 Route::get('/test', function () {
-    $link = Link::first();
-    $cur = $link->linkViews->increment('views');
-    dd($cur);
+//    session(['id' => '123']);
+    $session = session();
+    dd($session->all());
 });
 
 Route::get('/dashboard', function () {

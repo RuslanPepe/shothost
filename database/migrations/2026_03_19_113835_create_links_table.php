@@ -21,7 +21,8 @@ return new class extends Migration
             $table->enum('typeAccess', ['onlyView', 'all'])->default('onlyView');
             $table->string('Title', 255)->nullable();
             $table->string('Description', 1024)->nullable();
-            $table->string('CustomLink', 255)->nullable()->unique() ;
+            $table->string('CustomLink', 255)->nullable()->unique();
+            $table->string('password')->nullable();
             $table->foreignId('user_id')->nullable();
             $table->timestamp('expires_at')->index();
             $table->timestamps();

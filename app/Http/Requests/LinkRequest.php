@@ -32,6 +32,7 @@ class LinkRequest extends FormRequest
             'CustomLink' => 'nullable|string|max:255',
             'image' => 'required|array',
             'image.*' => 'file|mimes:jpeg,png,jpg,gif,svg|max:65536',
+            'password' => 'nullable|string|min:4',
         ];
     }
 }
