@@ -47,7 +47,7 @@ http://147.45.115.71
 ### Клонирование репозитория
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/RuslanVeliev-mq/shothost
 cd shotHosting
 ```
 
