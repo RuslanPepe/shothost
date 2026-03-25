@@ -32,7 +32,7 @@ class ZipServices {
                 $zip->addFromString($file, $disk->get($fullPath));
                 $hasFiles = true;
             } else {
-                logger('File not found: ' . $fullPath);
+                abort(403,'File not found: ');
             }
         }
 

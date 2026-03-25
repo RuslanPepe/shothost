@@ -136,19 +136,18 @@
                         <div class="modalSettingsTitle">Custom link</div>
                         <div class="input-group mb-3">
                             <span class="input-group-text modalSettingsSpan" id="customLinkLabel">hostshot.ru/l/</span>
-                            <input type="text" aria-describedby="customLinkLabel" class="form-control modalSettingsInputCustomLink modalSettingsInput" name="CustomLink" id="CustomLink">
+                            <input type="text" aria-describedby="customLinkLabel" autocomplete="off" class="form-control modalSettingsInputCustomLink modalSettingsInput" name="CustomLink" id="CustomLink">
                         </div>
                     </div>
                 </div>
             </form>
             <div class="modal-footer modalSettingsFooter">
                 <button type="button" class="btn modalSettingsBtn" data-bs-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn modalSettingsBtn" id="SettingsLinkBtn">Сохранить</button>
             </div>
         </div>
     </div>
 </div>
 
-
-<script src="{{ asset('js/Photo.js') }}"></script>
+<script src="{{ asset('js/Home.js') }}"></script>
 @endsection
+

@@ -33,7 +33,6 @@ class LinkServices {
         }
         if (session()->has($link->uuid)) {
             session()->forget($link->uuid);
-            logger(session()->all());
         }
     }
 }

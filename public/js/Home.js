@@ -12,20 +12,12 @@ function CheckAccess() {
     const access = new FormData(document.getElementById('SettingsLink')).get('access');
     const passwordBlock = document.getElementById('passwordBlock')
 
-
     passwordBlock.style.display = access === 'password' ? '' : 'none'
-
-    console.log(passwordBlock.style.display)
 }
 
 ['access1', 'access2', 'access3'].forEach((id)=>{
     document.getElementById(id).addEventListener('input', () => CheckAccess())
 })
-
-// document.getElementById('access1').addEventListener('input', () => CheckAccess())
-// document.getElementById('access2').addEventListener('input', () => CheckAccess())
-// document.getElementById('access3').addEventListener('input', () => CheckAccess())
-
 
 document.getElementById('createLinks').addEventListener('click', ()=>CreateLink())
 

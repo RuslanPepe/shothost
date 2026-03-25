@@ -1,0 +1,21 @@
+{
+    "_token": "xEnmxDtNS5EiKt5VcTj12NY5tQ0a5Wmcu4Pn7TRz",
+    "lifetime": "30",
+    "access": "password",
+    "deleteAfter": "10",
+    "typeAccess": "all",
+    "Title": "t",
+    "Description": "d",
+    "CustomLink": "cl"
+}
+
+[2026-03-19 00:38:43] local.DEBUG: array (
+  '_token' => 'xEnmxDtNS5EiKt5VcTj12NY5tQ0a5Wmcu4Pn7TRz',
+  'lifetime' => '30',
+  'access' => 'password',
+  'deleteAfter' => '10',
+  'typeAccess' => 'all',
+  'Title' => 't',
+  'Description' => 'd',
+  'CustomLink' => 'cl',
+)

@@ -26,8 +26,6 @@ class ImageController extends Controller{
 
         $File = $imageServices->getPhoto($path);
 
-        logger($File);
-
         return response()->download($File, $path);
     }
 

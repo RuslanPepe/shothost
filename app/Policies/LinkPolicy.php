@@ -19,14 +19,9 @@ class LinkPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Link $link): bool
+    public function view(?User $user, Link $link): bool
     {
-//        if ($link->access !== 'private' || $link->access === 'private' && $user->id == $link->user_id) {
-//            return true;
-//        }
-//        return false;
         return $link->access !== 'private' || ($user && $user->id === $link->user_id);
-//        return true;
     }
 
     /**
