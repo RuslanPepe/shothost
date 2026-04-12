@@ -6,15 +6,16 @@ use Illuminate\Support\Facades\Storage;
 
 class ImageServices {
 
-    public function storeImage($dataImage) {
-        $result = [];
+    public function storeImage($request) {
+        $data = $request->all();
+        $dataImage = $request->file('image');
         foreach ($dataImage as $image) {
-            $result[] = [
+            $data['paths'] = [
                 'path' => basename($image->store('images', 'public')),
                 'mimeType' => $image->getMimeType()
             ];
         }
-        return $result;
+        return $data;
     }
     public function showPathImage($path) {
         if (!file_exists(storage_path('app/private/images/' . $path))) {

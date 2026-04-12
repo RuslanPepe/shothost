@@ -11,7 +11,6 @@ use App\Services\ImageServices;
 
 class LinkServices {
     public function showImage($link) {
-        $imageServices = new ImageServices();
         foreach ($link->paths as $path) {
             $paths[] = 'storage/images/'.$path['path'];
         }
@@ -27,7 +26,7 @@ class LinkServices {
         LinkViews::create(['link_id' => $link->id]);
         return $link;
     }
-    public function CheckPassword($link) {
+    public function checkPassword($link) {
         if (!empty($link->password) && !session()->has($link->uuid)) {
             return redirect(route('password.index',['id' => $link->uuid]));
         }

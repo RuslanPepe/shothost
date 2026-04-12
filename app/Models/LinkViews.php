@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class LinkViews extends Model {
     protected $guarded = false;
 
-    public function Link() {
+    public function link() {
         return $this->belongsTo(Link::class);
     }
 }
