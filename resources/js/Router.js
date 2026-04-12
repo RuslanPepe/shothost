@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "./Pages/Home.vue";
 import Index from "./Pages/Index.vue";
+import Register from "./Pages/Register.vue";
+import Login from "./Pages/Login.vue";
+import AccessImage from "./Pages/AccessImage.vue";
 
 
 const routes = [
@@ -10,10 +13,30 @@ const routes = [
         component: Index
     },
     {
-        path: '/home',
-        name: 'home',
-        component: Home
+        path: '/reg',
+        name: 'user.reg',
+        component: Register
     },
+    {
+        path: '/login',
+        name: 'user.login',
+        component: Login
+    },
+    {
+        path: '/access/image',
+        name: 'image.access',
+        component: AccessImage
+    },
+    // {
+        // path: '',
+        // name: 'index',
+        // component: Index
+    // },
+    // {
+    //     path: '/home',
+    //     name: 'home',
+    //     component: Home
+    // },
 ]
 
 const router = createRouter({
