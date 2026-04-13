@@ -5,12 +5,12 @@ import { createPinia } from 'pinia'
 import App from './Pages/App.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../public/style.css'
-import {useUserStore} from "../stores/user.js";
+import {useUserStore} from "./stores/user.js";
 
 const app = createApp(App)
 
 app.use(createPinia())
-await useUserStore().userAuthCheck()
+useUserStore().userAuthCheck()
 app.use(router)
 
 app.mount('#app')

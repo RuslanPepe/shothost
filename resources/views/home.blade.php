@@ -7,8 +7,6 @@
     Нажми или перетащи фото 📷
 </div>
 
-<input id="formFileMultiple" type="file" accept="image/*" multiple hidden>
-
 <div class="carousel-container">
     <button class="arrow left" id="scrollLeft">‹</button>
     <div id="preview" class="preview"></div>

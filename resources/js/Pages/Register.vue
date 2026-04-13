@@ -28,7 +28,7 @@
 
 <script setup>
 
-import {useUserStore} from "../../stores/user.js";
+import {useUserStore} from "../stores/user.js";
 
 const userStore = useUserStore()
 
