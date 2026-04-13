@@ -33,7 +33,7 @@ body {
     overflow-x: auto;
     padding: 10px 0;
     scroll-behavior: smooth;
-    width: 70%;
+    width: 90%;
     margin: 20px auto;
 }
 
@@ -398,4 +398,8 @@ body {
     .btnAuth {
         color: black !important;
     }
+}
+
+button {
+    user-select: none;
 }
