@@ -3,12 +3,12 @@
         <div class="container-fluid d-flex align-items-center position-relative">
 
             <router-link
-                class="navbar-brand text-white position-absolute start-50 translate-middle-x"
+                class="navbar-brand text-white position-absolute start-50 translate-middle-x user-select-none"
                 to="/">
                 HostShot
             </router-link>
 
-            <div class="ms-auto d-flex gap-2">
+            <div class="ms-auto d-flex gap-2 user-select-none">
                 <router-link v-show="!userStore.isAuth && userStore.isLoaded" class="btn-navbar px-2 py-1" to="/reg">Reg</router-link>
                 <router-link v-show="!userStore.isAuth && userStore.isLoaded" class="btn-navbar px-2 py-1" to="/login">Login</router-link>
             </div>

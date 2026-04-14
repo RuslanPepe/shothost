@@ -8,31 +8,39 @@ export const useFileStore = defineStore('file', {
             // files: [],
             files: [
                 "/screenshot-2026-03-25-17:10:31.png",
-                "/screenshot-2026-03-25-17:10:31.png",
-                "/screenshot-2026-03-25-17:10:31.png",
-                "/screenshot-2026-03-25-17:10:31.png",
-                "/screenshot-2026-03-25-17:10:31.png",
+                // "/screenshot-2026-03-25-17:10:43.png",
+                // "/screenshot-2026-03-25-17:11:21.png",
+                // "/screenshot-2026-03-25-17:12:02.png",
+                // "/screenshot-2026-03-25-17:12:29.png",
             ],
-
+            imageBlock: {},
+            inputFile: {},
+            arrowShow: false
         }
     },
 
 
     actions: {
-        fileHandleInput(el) {
-            console.log(el)
-            Array.from(el.files).forEach((file) => {
+        checkWidth() {
+            if (!this.imageBlock) return
+            this.arrowShow = this.imageBlock.scrollWidth > this.imageBlock.clientWidth
+        },
+
+        fileHandleInput() {
+            Array.from(this.inputFile.files).forEach((file) => {
                 this.files.push(URL.createObjectURL(file))
                 console.log(URL.createObjectURL(file))
             })
-            el.value = null
-            console.log(this.files)
-            // for (const file in el.item()) {
-            //     console.log(file)
-            // }
-            // console.log(URL.createObjectURL(el.value))
-        }
+            this.inputFile.value = null
+        },
 
+        scrollRight() {
+            this.imageBlock.scrollBy(300, 0, "smooth")
+        },
+
+        scrollLeft() {
+            this.imageBlock.scrollBy(-300, 0, "smooth")
+        }
     },
 
 })
