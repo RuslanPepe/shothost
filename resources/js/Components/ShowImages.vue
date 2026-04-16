@@ -25,7 +25,7 @@ const fileStore = useFileStore()
 </script>
 
 <style scoped>
-.btnClose{
+.btnClose {
     top: 12px;
     right: 12px;
     font-size: 24px;

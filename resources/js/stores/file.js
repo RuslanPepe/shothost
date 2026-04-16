@@ -19,7 +19,17 @@ export const useFileStore = defineStore('file', {
                 id: null,
                 index: null,
                 status: false,
-            }
+            },
+            settingsLink: {
+                lifetime: 1,
+                access: 'link',
+                password: null,
+                deleteAfter: null,
+                typeAccess: 'onlyView',
+                title: '',
+                description: '',
+                customLinkLabel: '',
+            },
         }
     },
 

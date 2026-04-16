@@ -26,13 +26,26 @@
 
     <ShowImages v-if="fileStore.imageViewer.status" />
 
+    <div class="row">
+        <div class="col-12 d-flex">
+            <button class="btn createLinks" id="createLinks" type="button">
+                Создать ссылку
+            </button>
+            <button class="btn createSettings" id="createSettings" type="button" data-bs-toggle="modal" data-bs-target="#modalSettings">
+                ⚙
+            </button>
+        </div>
+    </div>
+
+    <ModalSettingsLink/>
+
 </template>
 
 <script setup>
-
 import {useFileStore} from "../stores/file.js";
 import {nextTick, onBeforeUnmount, onMounted, reactive, ref, watch} from "vue";
 import ShowImages from "../Components/ShowImages.vue";
+import ModalSettingsLink from "../Components/ModalSettingsLink.vue";
 
 const fileStore = useFileStore()
 const imageBlock = ref()
