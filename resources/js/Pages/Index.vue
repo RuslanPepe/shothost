@@ -10,9 +10,9 @@
             </div>
             <div class="col-10">
                 <div class="preview position-relative align-items-center" ref="imageBlock" id="preview">
-                    <div class="imageBlock position-relative user-select-none" v-for="(file, index) in fileStore.files" :key="index">
-                        <button type="button" class="btnRemoveImage align-items-center justify-content-center">x</button>
-                        <img height="280" :src="file" alt="err...">
+                    <div class="imageBlock position-relative user-select-none" v-for="(file) in fileStore.files" :key="file.id">
+                        <button type="button" class="btnRemoveImage align-items-center justify-content-center" @click="fileStore.fileRemove(file.id)" >x</button>
+                        <img height="280" :src="file.url" alt="err..." @click="fileStore.setViewerImageIndex(file.id)">
                     </div>
                 </div>
             </div>
@@ -22,15 +22,9 @@
         </div>
     </div>
 
-<!--    {{ $refs.imageBlock.clientHeight }}-->
+<!--    {{ fileStore.imageViewer }}-->
 
-    {{ fileStore.arrowShow }}
-
-    <button class="btn btn-outline-light" @click="fileStore.checkWidth()">123</button>
-
-<!--    {{ fileStore.files.length }}-->
-
-
+    <ShowImages v-if="fileStore.imageViewer.status" />
 
 </template>
 
@@ -38,6 +32,7 @@
 
 import {useFileStore} from "../stores/file.js";
 import {nextTick, onBeforeUnmount, onMounted, reactive, ref, watch} from "vue";
+import ShowImages from "../Components/ShowImages.vue";
 
 const fileStore = useFileStore()
 const imageBlock = ref()
@@ -75,7 +70,7 @@ onBeforeUnmount(() => {
     right: -10px;
     top: -10px;
     font-size: 16px;
-    z-index: 3;
+    z-index: 0;
     width: 24px;
     height: 24px;
 }
