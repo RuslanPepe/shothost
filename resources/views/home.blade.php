@@ -1,13 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Home ')
+@section('title', 'Home')
 
 @section('content')
 <div class="upload-area" onclick="input.click()">
     Нажми или перетащи фото 📷
 </div>
-
-<input id="formFileMultiple" type="file" accept="image/*" multiple hidden>
 
 <div class="carousel-container">
     <button class="arrow left" id="scrollLeft">‹</button>

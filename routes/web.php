@@ -7,19 +7,25 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Link;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/{any}', function () {
+    return view('app');
+})->where('any', '.*');
 
-Route::post('/download/image/all', [ImageController::class, 'downloadImagesAll'])->name('download.image.all');
-Route::post('/download/image', [ImageController::class, 'downloadImage'])->name('download.image');
+//Route::post('/download/image/all', [ImageController::class, 'downloadImagesAll'])->name('download.image.all');
+//Route::post('/download/image', [ImageController::class, 'downloadImage'])->name('download.image');
+//
+//Route::get('/', [LinkController::class, 'index']);
+//Route::post('/createLink', [LinkController::class, 'store']);
+//Route::get('/l/{link}', [LinkController::class, 'show']);
+//Route::get('/photo/{path}', [ImageController::class, 'show'])
+//    ->where('path', '.*')
+//    ->name('photo.show');
+//
+//Route::get('/link-password/{id}', [PasswordController::class, 'passwordIndex'])->name('password.index');
+//Route::post('/link-password/check', [PasswordController::class, 'passwordCheck'])->name('password.check');
 
-Route::get('/', [LinkController::class, 'index']);
-Route::post('/createLink', [LinkController::class, 'store']);
-Route::get('/l/{link}', [LinkController::class, 'show']);
-Route::get('/photo/{path}', [ImageController::class, 'show'])
-    ->where('path', '.*')
-    ->name('photo.show');
 
-Route::get('/link-password/{id}', [PasswordController::class, 'passwordIndex'])->name('password.index');
-Route::post('/link-password/check', [PasswordController::class, 'passwordCheck'])->name('password.check');
+
 
 //Route::get('/test', function () {
 ////    session(['id' => '123']);
@@ -37,4 +43,4 @@ Route::post('/link-password/check', [PasswordController::class, 'passwordCheck']
 //    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 //});
 
-require __DIR__.'/auth.php';
+//require __DIR__.'/auth.php';

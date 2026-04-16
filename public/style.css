@@ -7,6 +7,7 @@ body {
 .header {
     background: #403228;
     /*background: #7C8B95;*/
+    height: 60px;
 }
 
 ::-webkit-scrollbar {
@@ -32,7 +33,7 @@ body {
     overflow-x: auto;
     padding: 10px 0;
     scroll-behavior: smooth;
-    width: 70%;
+    width: 90%;
     margin: 20px auto;
 }
 
@@ -397,4 +398,8 @@ body {
     .btnAuth {
         color: black !important;
     }
+}
+
+button {
+    user-select: none;
 }

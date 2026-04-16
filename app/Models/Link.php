@@ -15,7 +15,7 @@ class Link extends Model {
         'expires_at' => 'datetime',
     ];
 
-    public function LinkViews() {
+    public function linkViews() {
         return $this->hasOne(LinkViews::class);
     }
 }
