@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Storage;
 class ImageServices {
 
     public function storeImage($request) {
-        $data = $request->all();
-        $dataImage = $request->file('image');
+        $dataImage = $request;
         foreach ($dataImage as $image) {
             $data['paths'] = [
                 'path' => basename($image->store('images', 'public')),
@@ -22,9 +21,6 @@ class ImageServices {
             abort(404);
         }
         return Storage::url('app/private/images/' . $path);
-//        return response()->file(
-//            storage_path('app/private/images/' . $path)
-//        );
     }
 
     public function getPhoto($path) {

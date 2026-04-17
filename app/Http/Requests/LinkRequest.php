@@ -23,7 +23,7 @@ class LinkRequest extends FormRequest
 
     protected function prepareForValidation() {
         $this->merge([
-            'data' => json_decode($this->input('settingsLink'), 1, 512, JSON_THROW_ON_ERROR),
+            'dataLink' => json_decode($this->input('settingsLink'), 1, 512, JSON_THROW_ON_ERROR),
         ]);
         $this->request->remove('settingsLink');
     }
@@ -31,14 +31,14 @@ class LinkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'data.lifetime' => 'required|integer|between:1,365',
-            'data.access' => 'required|in:link,password,private',
-            'data.deleteAfter' => 'between:1,365|nullable',
-            'data.typeAccess' => 'required|string|in:all,onlyView',
-            'data.Title' => 'nullable|string|max:255',
-            'data.Description' => 'nullable|string|max:1024',
-            'data.CustomLink' => 'nullable|string|max:255',
-            'data.password' => 'nullable|string|min:4',
+            'dataLink.lifetime' => 'required|integer|between:1,365',
+            'dataLink.access' => 'required|in:link,password,private',
+            'dataLink.deleteAfter' => 'between:1,365|nullable',
+            'dataLink.typeAccess' => 'required|string|in:all,onlyView',
+            'dataLink.Title' => 'nullable|string|max:255',
+            'dataLink.Description' => 'nullable|string|max:1024',
+            'dataLink.CustomLink' => 'nullable|string|max:255',
+            'dataLink.password' => 'nullable|string|min:4',
             'image' => 'required|array',
             'image.*' => 'file|mimes:jpeg,png,jpg,gif,svg|max:65536',
         ];

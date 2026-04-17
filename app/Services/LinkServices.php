@@ -16,14 +16,15 @@ class LinkServices {
         }
         return $paths;
     }
-    public function storeLink($data) {
+    public function storeLink($data, $request) {
         logger($data);
-        $data['expires_at'] = Carbon::now()->addDays((int)$data['lifetime']);
-        unset($data['image']);
-        $data['uuid'] = Str::uuid()->toString();
-        $data['password'] = $data['password'] ? Hash::make($data['password']) : '';
-        $link = Link::create($data);
-        LinkViews::create(['link_id' => $link->id]);
+        $request['expires_at'] = Carbon::now()->addDays((int)$request['lifetime']);
+        $request['paths'] = $data['paths'];
+        $request['uuid'] = Str::uuid()->toString();
+        $request['password'] = $request['password'] ? Hash::make($request['password']) : '';
+        logger($request);
+        $link = Link::create($request);
+//        LinkViews::create(['link_id' => $link->id]);
         return $link;
     }
     public function checkPassword($link) {

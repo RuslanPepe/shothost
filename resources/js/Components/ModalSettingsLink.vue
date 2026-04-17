@@ -51,7 +51,7 @@
                             <p v-if="!userStore.isAuth" style="color: rgb(255,0,0, .6); margin: 0">Private доступно при авторизации</p>
                         </div>
 
-                        <div class="Password" id="passwordBlock" style="display: none;">
+                        <div class="Password" id="passwordBlock" v-if="fileStore.settingsLink.access === 'password'">
                             <div class="modalSettingsTitle" id="Password">Password</div>
                             <input type="password" class="form-control modalSettingsInputPassword modalSettingsInput" v-model="fileStore.settingsLink.password" name="password" id="PasswordInput">
                         </div>

@@ -28,7 +28,7 @@ export const useFileStore = defineStore('file', {
                 typeAccess: 'onlyView',
                 title: '',
                 description: '',
-                customLinkLabel: '',
+                CustomLink: '',
             },
             formData: new FormData,
         }
@@ -55,6 +55,7 @@ export const useFileStore = defineStore('file', {
         },
 
         preHandleLink() {
+            this.formData = new FormData
             Array.from(this.files).forEach((f) => {
                 this.formData.append('image[]', f.file)
             })

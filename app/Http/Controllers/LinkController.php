@@ -15,11 +15,14 @@ class LinkController extends Controller {
         return view('home');
     }
     public function store(LinkRequest $request, LinkServices $linkServices, ImageServices $imageServices) {
-//    public function store(LinkRequest $request, LinkServices $linkServices, ImageServices $imageServices) {
         $data = $imageServices->storeImage($request->file('image'));
-        $link = $linkServices->storeLink($data);
+        $link = $linkServices->storeLink($data, $request->input('dataLink'));
         logger($request);
-        return response()->json($request, 201);
+        logger($data);
+        logger($link);
+
+//        logger([$data, $link]);
+//        return response()->json($link, 201);
     }
     public function show($id, LinkServices $linkServices) {
         $link = Link::where('uuid', $id)->orWhere('CustomLink', $id)->firstOrFail();
