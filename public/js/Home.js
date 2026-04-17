@@ -282,6 +282,7 @@ function CreateLink() {
     files.forEach((file) => {
         Form.append('image[]', file);
     })
+
     // Form.append('lifetime', 1);
     // Form.append('access', 'link');
     // Form.append('deleteAfter', 0);

@@ -22,13 +22,11 @@
         </div>
     </div>
 
-<!--    {{ fileStore.imageViewer }}-->
-
     <ShowImages v-if="fileStore.imageViewer.status" />
 
     <div class="row">
         <div class="col-12 d-flex">
-            <button class="btn createLinks" id="createLinks" type="button">
+            <button class="btn createLinks" id="createLinks" @click="fileStore.createLink()" type="button">
                 Создать ссылку
             </button>
             <button class="btn createSettings" id="createSettings" type="button" data-bs-toggle="modal" data-bs-target="#modalSettings">

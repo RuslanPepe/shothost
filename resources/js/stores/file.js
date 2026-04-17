@@ -30,6 +30,7 @@ export const useFileStore = defineStore('file', {
                 description: '',
                 customLinkLabel: '',
             },
+            formData: new FormData,
         }
     },
 
@@ -51,6 +52,21 @@ export const useFileStore = defineStore('file', {
                 URL.revokeObjectURL(this.files[index].url)
                 this.files.splice(index, 1)
             }
+        },
+
+        preHandleLink() {
+            Array.from(this.files).forEach((f) => {
+                this.formData.append('image[]', f.file)
+            })
+            this.formData.append('settingsLink', JSON.stringify(this.settingsLink))
+        },
+
+        createLink() {
+            this.preHandleLink()
+            axios.post('/api/createLink', this.formData)
+                .then(res => {
+                    console.log(res)
+                })
         },
 
         fileHandleInput() {

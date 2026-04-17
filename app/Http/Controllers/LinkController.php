@@ -6,6 +6,7 @@ use App\Http\Requests\LinkRequest;
 use App\Http\Resources\LinkResource;
 use App\Models\Link;
 use App\Services\LinkServices;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Services\ImageServices;
 
@@ -14,9 +15,11 @@ class LinkController extends Controller {
         return view('home');
     }
     public function store(LinkRequest $request, LinkServices $linkServices, ImageServices $imageServices) {
+//    public function store(LinkRequest $request, LinkServices $linkServices, ImageServices $imageServices) {
         $data = $imageServices->storeImage($request->file('image'));
         $link = $linkServices->storeLink($data);
-        return response()->json($link, 201);
+        logger($request);
+        return response()->json($request, 201);
     }
     public function show($id, LinkServices $linkServices) {
         $link = Link::where('uuid', $id)->orWhere('CustomLink', $id)->firstOrFail();
