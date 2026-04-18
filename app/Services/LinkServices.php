@@ -11,9 +11,7 @@ use App\Services\ImageServices;
 
 class LinkServices {
     public function showImage($link) {
-        logger($link->paths);
         foreach ($link->paths as $path) {
-            logger($path);
             $paths[] = 'storage/images/'.$path['path'];
         }
         return $paths;
@@ -24,7 +22,6 @@ class LinkServices {
         $request['uuid'] = Str::uuid()->toString();
         $request['CustomLink'] = $request['CustomLink'] ?? null;
         $request['password'] = $request['password'] ? Hash::make($request['password']) : '';
-        logger($request);
         $link = Link::create($request);
         LinkViews::create(['link_id' => $link->id]);
         unset($link['password']);

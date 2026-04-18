@@ -28,10 +28,10 @@
     </div>
     <div class="row blockDownloadImage" v-if="linkStore.link.access === 'all'">
         <div class="col-12 d-flex">
-            <button class="btn downloadImage" id="downloadImage" type="button">
+            <button class="btn downloadImage" @click="linkStore.downloadImage()" id="downloadImage" type="button">
                 Скачать фото
             </button>
-            <button class="btn downloadImageAll" id="downloadImageAll" type="button">
+            <button class="btn downloadImageAll" @click="linkStore.downloadImagesAll()" id="downloadImageAll" type="button">
                 Скачать все фото
             </button>
         </div>
