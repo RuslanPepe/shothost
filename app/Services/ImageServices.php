@@ -8,7 +8,6 @@ class ImageServices {
 
     public function storeImage($request) {
         $dataImage = $request;
-        logger($dataImage);
         foreach ($dataImage as $image) {
             $data['paths'][] = [
                 'path' => basename($image->store('images', 'public')),
