@@ -11,7 +11,9 @@ use App\Services\ImageServices;
 
 class LinkServices {
     public function showImage($link) {
+        logger($link->paths);
         foreach ($link->paths as $path) {
+            logger($path);
             $paths[] = 'storage/images/'.$path['path'];
         }
         return $paths;

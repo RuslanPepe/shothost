@@ -12,6 +12,8 @@ Route::get('/user', [UserController::class, 'getUser']);
 Route::post('/download/image/all', [ImageController::class, 'downloadImagesAll'])->name('download.image.all');
 Route::post('/download/image', [ImageController::class, 'downloadImage'])->name('download.image');
 
+Route::get('/get/data/link/{id}', [LinkController::class, 'getDataLink']);
+
 //Route::get('/', [LinkController::class, 'index']);
 Route::post('/createLink', [LinkController::class, 'store']);
 //Route::get('/l/{link}', [LinkController::class, 'show']);

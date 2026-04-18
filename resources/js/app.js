@@ -11,7 +11,7 @@ import {useUserStore} from "./stores/user.js";
 const app = createApp(App)
 
 app.use(createPinia())
-useUserStore().userAuthCheck()
+await useUserStore().userAuthCheck()
 app.use(router)
 
 app.mount('#app')

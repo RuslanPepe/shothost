@@ -19,6 +19,29 @@ class LinkController extends Controller {
         $link = $linkServices->storeLink($data, $request->input('dataLink'));
         return response()->json($link, 201);
     }
+    public function getDataLink($id, LinkServices $linkServices) {
+        logger($id);
+        $link = Link::where('uuid', $id)->orWhere('CustomLink', $id)->firstOrFail();
+        logger($link);
+        $this->authorize('view', $link);
+        $redirect = $linkServices->checkPassword($link);
+        if ($redirect){return $redirect;}
+        try {
+            DB::beginTransaction();
+            logger(32);
+            $paths = $linkServices->showImage($link);
+            logger(32);
+
+            $body = $link instanceof Link ? new LinkResource($link) : $link;
+            $access = $link->typeAccess;
+            $link->linkViews->increment('views');
+            DB::commit();
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            abort(400, $ex->getMessage());
+        }
+        return ['data' => $body, 'access' => $access, 'paths' => $paths];
+    }
     public function show($id, LinkServices $linkServices) {
         $link = Link::where('uuid', $id)->orWhere('CustomLink', $id)->firstOrFail();
         $this->authorize('view', $link);

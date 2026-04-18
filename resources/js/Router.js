@@ -4,6 +4,8 @@ import Index from "./Pages/Index.vue";
 import Register from "./Pages/Register.vue";
 import Login from "./Pages/Login.vue";
 import AccessImage from "./Pages/AccessImage.vue";
+import Link from "./Pages/Link.vue";
+import {useUserStore} from "./stores/user.js";
 
 
 const routes = [
@@ -28,9 +30,9 @@ const routes = [
         component: AccessImage
     },
     {
-        path: '/l/{link}',
+        path: '/l/:id',
         name: 'link.imageView',
-        component:
+        component: Link
     },
     // {
         // path: '',
