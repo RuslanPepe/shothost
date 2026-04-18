@@ -37,7 +37,7 @@ class LinkRequest extends FormRequest
             'dataLink.typeAccess' => 'required|string|in:all,onlyView',
             'dataLink.Title' => 'nullable|string|max:255',
             'dataLink.Description' => 'nullable|string|max:1024',
-            'dataLink.CustomLink' => 'nullable|string|max:255',
+            'dataLink.CustomLink' => 'string|max:255',
             'dataLink.password' => 'nullable|string|min:4',
             'image' => 'required|array',
             'image.*' => 'file|mimes:jpeg,png,jpg,gif,svg|max:65536',

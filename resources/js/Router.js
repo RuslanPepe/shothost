@@ -27,6 +27,11 @@ const routes = [
         name: 'image.access',
         component: AccessImage
     },
+    {
+        path: '/l/{link}',
+        name: 'link.imageView',
+        component:
+    },
     // {
         // path: '',
         // name: 'index',
